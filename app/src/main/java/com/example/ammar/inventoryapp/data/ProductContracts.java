@@ -4,8 +4,6 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.security.PublicKey;
-
 public class ProductContracts {
 
     //Empty class to prevent the instantiation of the class
