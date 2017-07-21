@@ -14,4 +14,21 @@
     <string name="price">Price</string>
     <string name="supplier_number">Supplier number</string>
     <string name="add_image">add image</string>
+    <string name="save_product">save product</string>
+    <string name="cannot_access_images">Cannot access images</string>
+    <string name="product_require_image">Product require image</string>
+    <string name="product_require_supplier">Product require a supplier number</string>
+    <string name="Product_require_quantity">Product require a quantity</string>
+    <string name="product_require_price">Product require a price</string>
+    <string name="product_require_name">Product require a name</string>
+    <string name="insert_failed">Failed to insert the Product</string>
+    <string name="insert_successful">Product insert successful</string>
+    <string name="delete_dialog_msg">Discard adding product and quit</string>
+    <string name="unsaved_changes_dialog_msg">Discard product and quit editing ?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
+    <string name="negative_price_error">price must be postive value</string>
+    <string name="negative_quantity_input">Quantity must be postive number</string>
+    <string name="sale_failed">failed could not update quantity</string>
+
 </resources>
