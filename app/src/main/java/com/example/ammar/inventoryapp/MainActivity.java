@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -43,9 +44,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         productList.setEmptyView(instructions);
         productsAdapter = new ProductsCursorAdapter(this, null);
         productList.setAdapter(productsAdapter);
+
         productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("onitem", "clicked");
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 Uri currentProductUri = ContentUris.withAppendedId(ProductEnty.CONTENT_URI, id);
                 intent.setData(currentProductUri);

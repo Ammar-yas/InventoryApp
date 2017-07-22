@@ -9,12 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!--TODO : refer to Strings.xml to fill in instructions-->
     <TextView
+        android:visibility="gone"
         android:id="@+id/products_insert_instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/instructions"
         tools:text="@string/instructions" />
 
     <android.support.design.widget.FloatingActionButton

@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/deTail_product_name"
+        android:id="@+id/detail_product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
@@ -31,12 +31,12 @@
         android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/deTail_product_price"
+        app:layout_constraintRight_toLeftOf="@+id/detail_product_price"
         app:layout_constraintTop_toBottomOf="@+id/detail_product_image"
         tools:text="this is a product name test" />
 
     <TextView
-        android:id="@+id/deTail_product_price"
+        android:id="@+id/detail_product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
@@ -57,7 +57,7 @@
         android:textAllCaps="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deTail_product_name" />
+        app:layout_constraintTop_toBottomOf="@+id/detail_product_name" />
 
     <Button
         android:id="@+id/detail_add_product"
@@ -79,10 +79,11 @@
         android:layout_height="48dp"
         android:padding="8dp"
         android:text="@string/remove_product"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintLeft_toRightOf="@+id/detail_product_quantity"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detail_product_quantity_text" />
+        app:layout_constraintTop_toBottomOf="@id/detail_product_quantity_text"
+        android:layout_marginTop="0dp" />
 
     <TextView
         android:id="@+id/detail_product_quantity"

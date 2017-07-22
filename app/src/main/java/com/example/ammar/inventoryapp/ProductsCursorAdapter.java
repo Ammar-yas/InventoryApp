@@ -20,8 +20,6 @@ import android.widget.Toast;
 
 import com.example.ammar.inventoryapp.data.ProductContracts.ProductEnty;
 
-import static android.R.attr.bitmap;
-import static android.R.attr.contextUri;
 import static android.R.attr.id;
 
 public class ProductsCursorAdapter extends CursorAdapter {
@@ -54,6 +52,7 @@ public class ProductsCursorAdapter extends CursorAdapter {
         TextView quantityTextView = (TextView) view.findViewById(R.id.product_quantity);
         Button saleButton = (Button) view.findViewById(R.id.product_sale);
 
+        int idColumnIndex = cursor.getColumnIndex(ProductEnty._ID);
         int imageColumnIndex = cursor.getColumnIndex(ProductEnty.COLUMN_PRODUCT_IMAGE);
         int nameColumnIndex = cursor.getColumnIndex(ProductEnty.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(ProductEnty.COLUMN_PRODUCT_PRICE);
@@ -65,38 +64,36 @@ public class ProductsCursorAdapter extends CursorAdapter {
         nameTextView.setText(cursor.getString(nameColumnIndex));
         priceTextView.setText(Double.toString(cursor.getDouble(priceColumnIndex)) + "$");
         quantityTextView.setText(Integer.toString(cursor.getInt(quantityColumnIndex)));
-        final int IndexColum = cursor.getColumnIndex(ProductEnty._ID);
-        final int id = cursor.getInt(IndexColum);
 
+        saleButton.setTag(R.id.id, cursor.getInt(idColumnIndex));
+        saleButton.setTag(R.id.cursor, cursor);
         saleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri currentUri = ContentUris.withAppendedId(ProductEnty.CONTENT_URI, id);
-                Cursor cursor = newViewContext.getContentResolver()
-                        .query(currentUri, null, null, null, null);
-                if (cursor != null ){
-                    saleDone(id, cursor, currentUri);
-                    Log.e("button click : ", "true");
-                }
+                Cursor cursor = (Cursor) v.getTag(R.id.cursor);
+                int id = (Integer) v.getTag(R.id.id);
+                saleDone(id, cursor);
             }
         });
-
     }
 
-    private void saleDone(int id, Cursor cursor, Uri currentProductUri) {
+    private void saleDone(int id, Cursor cursor) {
+
+        Log.e("cursor / id ", cursor.toString() + "/" +id);
+        cursor.moveToFirst();
         int quantityColumnIndex = cursor.getColumnIndex(ProductEnty.COLUMN_PRODUCT_QUANTITY);
         int quantity = cursor.getInt(quantityColumnIndex);
         if (quantity > 0) {
             quantity = quantity - 1;
             ContentValues values = new ContentValues();
             values.put(ProductEnty.COLUMN_PRODUCT_QUANTITY, quantity);
-            int rowsAffected = newViewContext.getContentResolver().update(currentProductUri, values, null, null);
-            Log.e("URI : ", currentProductUri.toString());
-            if (rowsAffected == 0) {
-                Toast.makeText(newViewContext, newViewContext.getString(R.string.sale_failed), Toast.LENGTH_LONG).show();
-                Log.e("URI : ", currentProductUri.toString());
-            }
-
+            Uri currentProductUri = ContentUris.withAppendedId(ProductEnty.CONTENT_URI, id);
+            newViewContext.getContentResolver().update(currentProductUri, values, null, null);
+        }else {
+            Toast.makeText(newViewContext, R.string.quantity_zero, Toast.LENGTH_LONG).show();
         }
     }
+
 }
+
+

@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Inventory App</string>
     <string name="sale">sale</string>
-    <!--TODO : fill in the instructions after completing the app-->
-    <string name="instructions" />
+    <string name="instructions">Please press the shopping cart icon below to start adding products</string>
     <string name="detail_activity_label">Product details</string>
     <string name="add_product_label">New product</string>
     <string name="quantity">Quantity</string>
@@ -30,5 +29,14 @@
     <string name="negative_price_error">price must be postive value</string>
     <string name="negative_quantity_input">Quantity must be postive number</string>
     <string name="sale_failed">failed could not update quantity</string>
+    <string name="quantity_zero">Cannot make sale quantity equal zero</string>
+    <string name="below_zero_quantity_error">Cannot decrease quantity below zero</string>
+    <string name="delete_failed">failed to delete pet</string>
+    <string name="delete_successful">Product deleted</string>
+    <string name="delete">delete</string>
+    <string name="cancel">cancel</string>
+    <string name="delete_confirmation">do you want to delete the product ?</string>
 
+    <item type="id" name="cursor">1</item>
+    <item type="id" name="id">2</item>
 </resources>
