@@ -66,23 +66,18 @@ public class ProductsCursorAdapter extends CursorAdapter {
         quantityTextView.setText(Integer.toString(cursor.getInt(quantityColumnIndex)));
 
         saleButton.setTag(R.id.id, cursor.getInt(idColumnIndex));
-        saleButton.setTag(R.id.cursor, cursor);
+        saleButton.setTag(R.id.cursor, cursor.getInt(quantityColumnIndex));
         saleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor cursor = (Cursor) v.getTag(R.id.cursor);
+                int quantity = (Integer) v.getTag(R.id.cursor);
                 int id = (Integer) v.getTag(R.id.id);
-                saleDone(id, cursor);
+                saleDone(id, quantity);
             }
         });
     }
 
-    private void saleDone(int id, Cursor cursor) {
-
-        Log.e("cursor / id ", cursor.toString() + "/" +id);
-        cursor.moveToFirst();
-        int quantityColumnIndex = cursor.getColumnIndex(ProductEnty.COLUMN_PRODUCT_QUANTITY);
-        int quantity = cursor.getInt(quantityColumnIndex);
+    private void saleDone(int id, int quantity) {
         if (quantity > 0) {
             quantity = quantity - 1;
             ContentValues values = new ContentValues();
